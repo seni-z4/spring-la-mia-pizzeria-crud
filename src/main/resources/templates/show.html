@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <main>
+      <section class="container">
+        <div class="card mb-3 mt-5 text-center">
+          <img
+            th:src="@{'/' + ${pizza.url}}"
+            class="rounded mx-auto d-block mt-4"
+            style="width: 30rem"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">[[${pizza.nome}]]</h5>
+            <p class="card-text">[[${pizza.descrizione}]]</p>
+            <p class="card-text">[[${pizza.prezzo}]]€</p>
+            <a href="/pizza" class="btn btn-primary">Back to the list</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

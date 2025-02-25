@@ -1,4 +1,4 @@
-package pizzeria.it.piazzamvc;
+package pizzeria.it.pizzamvc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
