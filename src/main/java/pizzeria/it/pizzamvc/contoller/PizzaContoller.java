@@ -61,4 +61,33 @@ public class PizzaContoller {
 
     return "redirect:/pizza";
   }
+
+  @GetMapping("pizza/edit/{id}")
+  public String update(@PathVariable("id") Integer id, Model model) {
+    model.addAttribute("pizza", pizzaRepo.findById(id).get());
+    return "update";
+
+  }
+
+  @PostMapping("/pizza/edit/{id}")
+  public String updateEdit(@Valid @ModelAttribute("pizza") Pizza pizza,
+      BindingResult bindingResult, Model model) {
+
+    if (bindingResult.hasErrors()) {
+      return "create";
+    }
+
+    pizzaRepo.save(pizza);
+
+    return "redirect:/pizza";
+  }
+
+  @PostMapping("/pizza/delete/{id}")
+  public String delete(@PathVariable("id") Integer id) {
+    Pizza pizza = pizzaRepo.findById(id).get();
+
+    pizzaRepo.delete(pizza);
+    return "redirect:/pizza";
+  }
+
 }

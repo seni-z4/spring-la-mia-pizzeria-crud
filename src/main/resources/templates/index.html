@@ -17,6 +17,11 @@
         <div class="col-12">
           <h1 class="text-center mb-5">Pizzeria Milano</h1>
         </div>
+        <div class="col md-3 mb-4 d-flex justify-content-end">
+          <a th:href="@{pizza/create}" class="btn btn-primary"
+            >create a new pizza</a
+          >
+        </div>
         <table class="mb-3">
           <thead>
             <tr>
@@ -26,6 +31,8 @@
               <!-- <th>url</th> -->
               <th>prezzo</th>
               <th>dettagli</th>
+              <th>update</th>
+              <th>delete</th>
             </tr>
           </thead>
 
@@ -42,6 +49,28 @@
                   class="btn btn-sm btn-primary"
                   >dettagli</a
                 >
+              </td>
+              <td>
+                <a
+                  th:href="@{/pizza/edit/{id}(id=*{id})}"
+                  class="btn btn-sm btn-warning"
+                  >update</a
+                >
+              </td>
+              <td>
+                <!-- <a
+                  th:href="@{/pizza/delete/{id}(id=*{id})}"
+                  class="btn btn-sm btn-danger"
+                >
+                  delete
+                </a> -->
+                <form th:action="@{/pizza/delete/{id}(id=*{id})}" method="post">
+                  <input
+                    type="submit"
+                    value="delete"
+                    class="btn btn-sm btn-danger"
+                  />
+                </form>
               </td>
             </tr>
           </tbody>
