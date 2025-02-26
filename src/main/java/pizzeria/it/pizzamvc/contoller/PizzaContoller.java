@@ -63,14 +63,14 @@ public class PizzaContoller {
   }
 
   @GetMapping("pizza/edit/{id}")
-  public String update(@PathVariable("id") Integer id, Model model) {
+  public String edit(@PathVariable("id") Integer id, Model model) {
     model.addAttribute("pizza", pizzaRepo.findById(id).get());
     return "update";
 
   }
 
   @PostMapping("/pizza/edit/{id}")
-  public String updateEdit(@Valid @ModelAttribute("pizza") Pizza pizza,
+  public String update(@Valid @ModelAttribute("pizza") Pizza pizza,
       BindingResult bindingResult, Model model) {
 
     if (bindingResult.hasErrors()) {
