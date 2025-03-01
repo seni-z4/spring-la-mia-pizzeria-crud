@@ -29,32 +29,32 @@ public class PizzaContoller {
   public String index(Model model) {
     List<Pizza> pizzeria = pizzaRepo.findAll();
     model.addAttribute("pizza", pizzeria);
-    return "index";
+    return "pizza/index";
   }
 
   @GetMapping("/pizza/{id}")
   public String show(@PathVariable("id") Integer id, Model model) {
     model.addAttribute("pizza", pizzaRepo.findById(id).get());
-    return "show";
+    return "pizza/show";
   }
 
   @GetMapping("/pizza/filted-by")
   public String findbynome(@RequestParam(name = "nome") String name, Model model) {
     model.addAttribute("pizza", pizzaRepo.findBynomeContaining(name));
-    return "index";
+    return "pizza/index";
   }
 
   @GetMapping("/pizza/create")
   public String create(Model model) {
     model.addAttribute("pizza", new Pizza());
-    return "/create";
+    return "pizza/create";
   }
 
   @PostMapping("/pizza/create")
   public String store(@Valid @ModelAttribute("pizza") Pizza pizza, BindingResult bindingResult, Model model) {
 
     if (bindingResult.hasErrors()) {
-      return "create";
+      return "pizza/create";
     }
 
     pizzaRepo.save(pizza);
@@ -65,7 +65,7 @@ public class PizzaContoller {
   @GetMapping("pizza/edit/{id}")
   public String edit(@PathVariable("id") Integer id, Model model) {
     model.addAttribute("pizza", pizzaRepo.findById(id).get());
-    return "update";
+    return "pizza/update";
 
   }
 
@@ -74,7 +74,7 @@ public class PizzaContoller {
       BindingResult bindingResult, Model model) {
 
     if (bindingResult.hasErrors()) {
-      return "create";
+      return "pizza/create";
     }
 
     pizzaRepo.save(pizza);
